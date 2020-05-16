@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="provider"/>
+    <!-- 注册中心的ip地址 -->
+    <dubbo:registry address="zookeeper://10.20.35.202:2181"/>
+    <!-- 扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类 -->
+    <dubbo:annotation package="service.impl"/>
+
+    <!-- use dubbo protocol to export service on port 30102 -->
+    <dubbo:protocol name="dubbo" port="30102"/>
+
+    <!-- service implementation, as same as regular local bean -->
+    <bean id="userService" class="com.senior_web.provider.service.impl.UserImpl"/>
+    <bean id="jobService" class="com.senior_web.provider.service.impl.JobImpl"/>
+    <bean id="AttachmentService" class="com.senior_web.provider.service.impl.AttachmentServiceImpl"/>
+    <bean id="DataFlowControl" class="com.senior_web.provider.service.impl.DataFlowControlImpl"/>
+    <!-- declare the service interface to be exported -->
+    <dubbo:service interface="com.senior_web.common.service.UserService" ref="userService"/>
+    <dubbo:service interface="com.senior_web.common.service.JobService" ref="jobService"/>
+    <dubbo:service interface="com.senior_web.common.service.AttachmentService" ref="AttachmentService"/>
+    <dubbo:service interface="com.senior_web.common.service.DataFlowControl" ref="DataFlowControl"/>
+</beans>

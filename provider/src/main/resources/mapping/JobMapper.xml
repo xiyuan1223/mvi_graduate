@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.senior_web.provider.mapper.JobMapper" >
+    <resultMap id="BaseResultMap" type="com.senior_web.common.domin.Job" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="position" property="position" jdbcType="VARCHAR" />
+        <result column="company" property="company" jdbcType="VARCHAR" />
+        <result column="area" property="area" jdbcType="VARCHAR" />
+        <result column="salary" property="salary" jdbcType="DECIMAL" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, position, company, area, salary
+    </sql>
+
+
+    <select id="getJobById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from jobs t
+        where t.id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="getJobByPage" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from jobs t
+        limit #{offset,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+    </select>
+
+    <select id="getJobTotal" resultType="int" parameterType="java.lang.Integer" >
+        select
+        count(*)
+        from jobs t
+
+    </select>
+
+    <select id="findList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from jobs t
+        where t.id between #{startId,jdbcType=INTEGER} and #{stopId,jdbcType=INTEGER}
+
+    </select>
+
+<!--    <insert id="saveUser" parameterType="com.senior_web.common.domin.User" >-->
+<!--        insert into u_user-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides="," >-->
+<!--            <if test="userId != null" >-->
+<!--                userId,-->
+<!--            </if>-->
+<!--            <if test="name != null" >-->
+<!--                name,-->
+<!--            </if>-->
+<!--            <if test="age != null" >-->
+<!--                age,-->
+<!--            </if>-->
+<!--            <if test="sex != null" >-->
+<!--                sex,-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides="," >-->
+<!--            <if test="userId != null" >-->
+<!--                #{userId,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--            <if test="name != null" >-->
+<!--                #{name,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--            <if test="age != null" >-->
+<!--                #{age,jdbcType=INTEGER},-->
+<!--            </if>-->
+<!--            <if test="sex != null" >-->
+<!--                #{sex,jdbcType=VARCHAR},-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+    <update id="updateJob" parameterType="com.senior_web.common.domin.Job" >
+        UPDATE jobs
+        SET
+        <if test="position != null" >
+            postion = #{position},
+        </if>
+        <if test="company != null" >
+            company = #{company},
+        </if>
+        <if test="area != null" >
+            area = #{area}
+        </if>
+        <if test="salary != null" >
+            salary = #{salary}
+        </if>
+        WHERE
+        id = #{id}
+    </update>
+
+
+    <delete id="deleteJob" parameterType="java.lang.Integer">
+        delete from
+        jobs
+        where
+        id = #{id}
+    </delete>
+
+
+
+
+</mapper>

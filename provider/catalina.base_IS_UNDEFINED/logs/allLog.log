@@ -1,0 +1,3 @@
+00:24:23.286 [main] INFO  o.s.b.t.c.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.senior_web.provider.ProviderApplicationTests], using SpringBootContextLoader
+00:24:23.305 [main] INFO  o.s.t.c.support.AbstractContextLoader - Could not detect default resource locations for test class [com.senior_web.provider.ProviderApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+00:24:23.307 [main] INFO  o.s.t.c.s.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.senior_web.provider.ProviderApplicationTests]: ProviderApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.

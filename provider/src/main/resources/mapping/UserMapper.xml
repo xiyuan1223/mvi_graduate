@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.senior_web.provider.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.senior_web.common.domin.User" >
+        <result column="userId" property="userId" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        userId, name, password
+    </sql>
+    <select id="getOne" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from u_user t
+        where t.userId = #{userId,jdbcType=INTEGER}
+    </select>
+
+
+
+
+    <select id="getUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from u_user t
+        where t.userId = #{userId,jdbcType=INTEGER}
+    </select>
+    <select id="getUserByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select
+        <include refid="Base_Column_List" />
+        from u_user t
+        where t.name = #{name,jdbcType=VARCHAR}
+    </select>
+    <select id="findList" resultMap="BaseResultMap"  >
+        select
+        <include refid="Base_Column_List" />
+        from u_user t
+
+    </select>
+
+    <insert id="saveUser" parameterType="com.senior_web.common.domin.User" >
+        insert into u_user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                userId,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="password != null" >
+                password,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="userId != null" >
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null" >
+                #{password,jdbcType=VARCHAR},
+            </if>
+
+        </trim>
+    </insert>
+
+
+
+
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from
+        u_user
+        where
+        userId = #{userId}
+    </delete>
+
+    <insert id="insert" parameterType="com.senior_web.common.domin.User" >
+        insert into u_user (userId, name, password)
+        values (#{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+
+
+</mapper>

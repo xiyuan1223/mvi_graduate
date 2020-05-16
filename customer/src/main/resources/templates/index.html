@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<head>
+<title>Colored  an Admin Panel Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Colored Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link rel="stylesheet" href="../static/css/bootstrap.css">
+<link href="../static/css/style1.css" rel='stylesheet' type='text/css' />
+<link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../static/css/font.css" type="text/css"/>
+<link href="../static/css/font-awesome.css" rel="stylesheet">
+<script src="../static/js/jquery2.0.3.min.js"></script>
+<script src="../static/js/modernizr.js"></script>
+<script src="../static/js/jquery.cookie.js"></script>
+<script src="../static/js/screenfull.js"></script>
+	<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+
+
+		<script>
+		$(function () {
+			$('#supported').text('Supported/allowed: ' + !!screenfull.enabled);
+
+			if (!screenfull.enabled) {
+				return false;
+			}
+			$('#toggle').click(function () {
+				screenfull.toggle($('#container')[0]);
+			});	
+		});
+		</script>
+<!-- charts -->
+<script src="../static/js/raphael-min.js"></script>
+<script src="../static/js/morris.js"></script>
+<link rel="stylesheet" href="../static/css/morris.css">
+<!-- //charts -->
+<!--skycons-icons-->
+<script src="../static/js/skycons.js"></script>
+	<script src="../static/js/Getparam.js"></script>
+	<!--//skycons-icons-->
+
+
+<style>
+	.echarts{
+		width:1000px;
+		margin:0 auto;
+
+	}
+	li{
+		display: inline;
+	}
+</style>
+
+</head>
+<body class="dashboard-page">
+	<script>
+	        var theme = $.cookie('protonTheme') || 'default';
+	        $('body').removeClass (function (index, css) {
+	            return (css.match (/\btheme-\S+/g) || []).join(' ');
+	        });
+	        if (theme !== 'default') $('body').addClass(theme);
+        </script>
+
+
+	<section class="wrapper scrollable">
+		<nav class="user-menu">
+			<a href="javascript:;" class="main-menu-access">
+			<i class="icon-proton-logo"></i>
+			<i class="icon-reorder"></i>
+			</a>
+		</nav>
+		<section class="title-bar">
+			<div class="logo">
+				<h1><a href="index.html"><img src="../static/images/logo.png" alt="" />图表展示</a></h1>
+			</div>
+			<div class="header-right">
+				<div class="profile_details_left">
+					<div class="header-right-left">
+						<!--notifications of menu start -->
+						<ul class="nofitications-dropdown">
+
+							<div class="clearfix"> </div>
+						</ul>
+					</div>
+
+					<div class="profile_details">		
+						<ul>
+							<li class="dropdown profile_details_drop">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+									<div class="profile_img">
+										<span class="prfil-img"><i class="fa fa-user" aria-hidden="true"></i></span>
+										<span id="username" class="fa"></span>
+										<div class="clearfix"></div>
+									</div>	
+								</a>
+
+								<ul class="dropdown-menu drp-mnu">
+
+									<li> <a href="login.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+									<li> <a href="page.html"><i class="fa fa-sign-out"></i> 列表展示</a> </li>
+									<li> <a href="geo.html"><i class="fa fa-sign-out"></i> geo</a> </li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+		</section>
+
+		<div class="main-grid">
+			<div class="social grid">
+				<div class="grid-info">
+					<div class="col-md-3 top-comment-grid">
+						<div class="comments likes">
+							<div class="comments-icon">
+								<i class="fa fa-facebook"></i>
+							</div>
+							<div class="comments-info likes-info">
+								<h3>121248</h3>
+								<a href="#">职位</a>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="col-md-3 top-comment-grid">
+						<div class="comments">
+							<div class="comments-icon">
+								<i class="fa fa-comments"></i>
+							</div>
+							<div class="comments-info">
+								<h3>383</h3>
+								<a href="#">城市</a>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="col-md-3 top-comment-grid">
+						<div class="comments views">
+							<div class="comments-icon">
+								<i class="fa fa-eye"></i>
+							</div>
+							<div class="comments-info views-info">
+								<h3>76816</h3>
+								<a href="#">公司</a>
+							</div>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			
+
+		</div>
+		<!-- footer -->
+	</section>
+	<script src="../static/js/bootstrap.js"></script>
+	<script>
+		console.log($.Request("name"))
+		$('#username').text($.Request("name"));
+	</script>
+
+
+	<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+
+	<!--  直方图    -->
+	<div class="echarts">
+		<div id="histogram" style="width: 1000px;height:400px;"></div>
+
+		<!--  饼图    -->
+		<div id="pie_chart" style="width: 1000px;height:400px;"></div>
+
+		<!--  折线图    -->
+		<div id="line_chart" style="width: 1000px;height:400px;"></div>
+
+	</div>
+
+
+
+	<script type="text/javascript" src="../static/js/ecahrtjs.js"></script>
+</body>
+</html>
